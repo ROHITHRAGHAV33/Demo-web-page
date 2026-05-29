@@ -1,223 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Fast - My College Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tamil Nadu Farmer Portal</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: Arial, sans-serif;
-    }
+<style>
+:root{
+    --primary:#2e7d32;
+    --secondary:#43a047;
+    --light:#f5f7fa;
+    --dark:#1b1b1b;
+    --card:#ffffff;
+    --shadow:0 8px 25px rgba(0,0,0,0.08);
+}
 
-    body{
-      background:#f4f7fb;
-      color:#333;
-      line-height:1.6;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
+}
 
-    header{
-      background:#0d6efd;
-      color:white;
-      padding:40px 20px;
-      text-align:center;
-    }
+body{
+    background:var(--light);
+    color:#333;
+}
 
-    header h1{
-      font-size:48px;
-      margin-bottom:10px;
-    }
+header{
+    background:linear-gradient(135deg,#2e7d32,#66bb6a);
+    color:white;
+    padding:20px;
+}
 
-    header p{
-      font-size:18px;
+.nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:1.5rem;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:20px;
+}
+
+.hero{
+    text-align:center;
+    padding:60px 20px;
+}
+
+.hero h1{
+    font-size:2.5rem;
+    margin-bottom:15px;
+}
+
+.hero p{
+    font-size:1.1rem;
+    max-width:700px;
+    margin:auto;
+}
+
+.container{
+    width:90%;
+    max-width:1200px;
+    margin:auto;
+}
+
+.section{
+    margin:40px 0;
+}
+
+.section-title{
+    font-size:1.8rem;
+    margin-bottom:20px;
+    color:var(--primary);
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:var(--card);
+    border-radius:15px;
+    padding:20px;
+    box-shadow:var(--shadow);
+}
+
+.card h3{
+    margin-bottom:10px;
+    color:var(--primary);
+}
+
+.weather{
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.weather-box{
+    flex:1;
+    min-width:250px;
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:var(--shadow);
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    border-radius:15px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+}
+
+th{
+    background:var(--primary);
+    color:white;
+}
+
+th,td{
+    padding:14px;
+    text-align:center;
+}
+
+tr:nth-child(even){
+    background:#f3f6f8;
+}
+
+.calculator{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:var(--shadow);
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin-top:8px;
+    margin-bottom:15px;
+    border:1px solid #ccc;
+    border-radius:8px;
+}
+
+button{
+    background:var(--primary);
+    color:white;
+    border:none;
+    padding:12px 20px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:var(--secondary);
+}
+
+.result{
+    margin-top:15px;
+    font-size:1.2rem;
+    font-weight:bold;
+}
+
+.scheme{
+    display:block;
+    text-decoration:none;
+    color:#2e7d32;
+    margin-bottom:10px;
+    font-weight:600;
+}
+
+footer{
+    background:#1f2937;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+
+@media(max-width:768px){
+    .hero h1{
+        font-size:2rem;
     }
 
     nav{
-      background:#083b8a;
-      padding:15px;
-      text-align:center;
+        margin-top:10px;
     }
 
     nav a{
-      color:white;
-      text-decoration:none;
-      margin:0 15px;
-      font-weight:bold;
+        display:inline-block;
+        margin:10px;
     }
-
-    nav a:hover{
-      color:#ffd43b;
-    }
-
-    .container{
-      width:90%;
-      max-width:1100px;
-      margin:auto;
-      padding:40px 0;
-    }
-
-    section{
-      background:white;
-      margin-bottom:30px;
-      padding:30px;
-      border-radius:12px;
-      box-shadow:0 2px 10px rgba(0,0,0,0.1);
-    }
-
-    section h2{
-      color:#0d6efd;
-      margin-bottom:15px;
-    }
-
-    .skills span{
-      display:inline-block;
-      background:#0d6efd;
-      color:white;
-      padding:8px 15px;
-      margin:5px;
-      border-radius:20px;
-      font-size:14px;
-    }
-
-    .achievement{
-      margin-bottom:15px;
-      padding:15px;
-      border-left:5px solid #0d6efd;
-      background:#eef4ff;
-    }
-
-    footer{
-      background:#0d6efd;
-      color:white;
-      text-align:center;
-      padding:20px;
-      margin-top:20px;
-    }
-
-    .btn{
-      display:inline-block;
-      margin-top:15px;
-      padding:10px 20px;
-      background:#0d6efd;
-      color:white;
-      text-decoration:none;
-      border-radius:6px;
-    }
-
-    .btn:hover{
-      background:#083b8a;
-    }
-  </style>
+}
+</style>
 </head>
-
 <body>
 
-  <!-- Header -->
-  <header>
-    <h1>FAST</h1>
-    <p>My College Portfolio Website</p>
-  </header>
+<header>
+    <div class="nav">
+        <div class="logo">🌾 Tamil Nadu Farmer Portal</div>
+        <nav>
+            <a href="#weather">Weather</a>
+            <a href="#crops">Crops</a>
+            <a href="#market">Market</a>
+            <a href="#calculator">Calculator</a>
+            <a href="#schemes">Schemes</a>
+        </nav>
+    </div>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#about">About</a>
-    <a href="#works">College Works</a>
-    <a href="#achievements">Achievements</a>
-    <a href="#skills">Skills</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <div class="container">
-
-    <!-- About Section -->
-    <section id="about">
-      <h2>About Me</h2>
-      <p>
-        Hello! I am a college student passionate about technology, learning,
-        and innovation. This website showcases my academic works, projects,
-        achievements, and personal details.
-      </p>
-
-      <a href="#" class="btn">Download Resume</a>
-    </section>
-
-    <!-- College Works -->
-    <section id="works">
-      <h2>College Works & Projects</h2>
-
-      <div class="achievement">
-        <h3>Student Management System</h3>
+    <div class="hero">
+        <h1>Smart Farming for Tamil Nadu Farmers</h1>
         <p>
-          Developed a simple student management system using HTML, CSS,
-          JavaScript, and MySQL.
+            Weather updates, crop guidance, market prices,
+            government schemes and profit calculations in one place.
         </p>
-      </div>
+    </div>
+</header>
 
-      <div class="achievement">
-        <h3>Mini Science Project</h3>
-        <p>
-          Created an innovative science model for inter-college exhibition.
-        </p>
-      </div>
+<div class="container">
 
-      <div class="achievement">
-        <h3>Web Development Project</h3>
-        <p>
-          Designed responsive websites and UI layouts for academic purposes.
-        </p>
-      </div>
+    <!-- Weather -->
+    <section class="section" id="weather">
+        <h2 class="section-title">☀ Weather Information</h2>
+
+        <div class="weather">
+            <div class="weather-box">
+                <h3>Today's Weather</h3>
+                <p><strong>Location:</strong> Coimbatore</p>
+                <p><strong>Temperature:</strong> 31°C</p>
+                <p><strong>Humidity:</strong> 68%</p>
+                <p><strong>Rain Chance:</strong> 25%</p>
+            </div>
+
+            <div class="weather-box">
+                <h3>Farming Advice</h3>
+                <p>
+                    Monitor irrigation needs and apply fertilizers
+                    during cooler morning hours.
+                </p>
+            </div>
+        </div>
     </section>
 
-    <!-- Achievements -->
-    <section id="achievements">
-      <h2>Achievements</h2>
+    <!-- Crop Advisory -->
+    <section class="section" id="crops">
+        <h2 class="section-title">🌱 Crop Advisory</h2>
 
-      <div class="achievement">
-        <p>🏆 Won 1st Prize in Coding Competition</p>
-      </div>
+        <div class="grid">
+            <div class="card">
+                <h3>Paddy</h3>
+                <p>Maintain water levels and monitor pest attacks.</p>
+            </div>
 
-      <div class="achievement">
-        <p>📜 Completed Web Development Certification</p>
-      </div>
+            <div class="card">
+                <h3>Sugarcane</h3>
+                <p>Ensure proper irrigation and weed control.</p>
+            </div>
 
-      <div class="achievement">
-        <p>🎤 Participated in National Level Symposium</p>
-      </div>
+            <div class="card">
+                <h3>Banana</h3>
+                <p>Check for leaf spot disease and nutrient deficiency.</p>
+            </div>
+
+            <div class="card">
+                <h3>Groundnut</h3>
+                <p>Monitor flowering stage and moisture levels.</p>
+            </div>
+        </div>
     </section>
 
-    <!-- Skills -->
-    <section id="skills">
-      <h2>Skills</h2>
+    <!-- Market Prices -->
+    <section class="section" id="market">
+        <h2 class="section-title">📈 Market Prices</h2>
 
-      <div class="skills">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>Python</span>
-        <span>C Programming</span>
-        <span>MySQL</span>
-      </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Crop</th>
+                    <th>Market</th>
+                    <th>Price (₹/Quintal)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Paddy</td>
+                    <td>Erode</td>
+                    <td>2200</td>
+                </tr>
+                <tr>
+                    <td>Maize</td>
+                    <td>Salem</td>
+                    <td>2050</td>
+                </tr>
+                <tr>
+                    <td>Groundnut</td>
+                    <td>Madurai</td>
+                    <td>6200</td>
+                </tr>
+                <tr>
+                    <td>Coconut</td>
+                    <td>Pollachi</td>
+                    <td>14500</td>
+                </tr>
+            </tbody>
+        </table>
     </section>
 
-    <!-- Contact -->
-    <section id="contact">
-      <h2>Contact Details</h2>
+    <!-- Calculator -->
+    <section class="section" id="calculator">
+        <h2 class="section-title">💰 Profit Calculator</h2>
 
-      <p><strong>Name:</strong> Your Name</p>
-      <p><strong>College:</strong> Your College Name</p>
-      <p><strong>Email:</strong> yourmail@example.com</p>
-      <p><strong>Phone:</strong> +91 9876543210</p>
+        <div class="calculator">
+            <label>Total Income (₹)</label>
+            <input type="number" id="income" placeholder="Enter total income">
+
+            <label>Total Expenses (₹)</label>
+            <input type="number" id="expense" placeholder="Enter total expenses">
+
+            <button onclick="calculateProfit()">Calculate Profit</button>
+
+            <div class="result" id="profitResult"></div>
+        </div>
     </section>
 
-  </div>
+    <!-- Schemes -->
+    <section class="section" id="schemes">
+        <h2 class="section-title">🏛 Government Schemes</h2>
 
-  <!-- Footer -->
-  <footer>
-    <p>© 2026 FAST | Designed by You</p>
-  </footer>
+        <div class="card">
+            <a class="scheme" href="#">
+                PM-KISAN Income Support Scheme
+            </a>
+
+            <a class="scheme" href="#">
+                Crop Insurance Scheme (PMFBY)
+            </a>
+
+            <a class="scheme" href="#">
+                Tamil Nadu Agricultural Subsidy Programs
+            </a>
+
+            <a class="scheme" href="#">
+                Solar Pump Subsidy Scheme
+            </a>
+        </div>
+    </section>
+
+    <!-- Helpline -->
+    <section class="section">
+        <h2 class="section-title">📞 Farmer Support</h2>
+
+        <div class="card">
+            <p><strong>Agriculture Helpline:</strong> 1800-180-1551</p>
+            <p><strong>Email:</strong> support@tnfarmerportal.in</p>
+            <p><strong>Office Hours:</strong> 9:00 AM - 6:00 PM</p>
+        </div>
+    </section>
+
+</div>
+
+<footer>
+    <p>© 2026 Tamil Nadu Farmer Portal | Empowering Farmers Through Technology</p>
+</footer>
+
+<script>
+function calculateProfit() {
+    let income = parseFloat(document.getElementById('income').value) || 0;
+    let expense = parseFloat(document.getElementById('expense').value) || 0;
+
+    let profit = income - expense;
+
+    document.getElementById('profitResult').innerHTML =
+        "Estimated Profit: ₹ " + profit.toLocaleString();
+}
+</script>
 
 </body>
 </html>
