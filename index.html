@@ -3,388 +3,157 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tamil Nadu Farmer Portal</title>
-
+<title>Tamil Nadu Smart Farmer Portal</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-    --primary:#2e7d32;
-    --secondary:#43a047;
-    --light:#f5f7fa;
-    --dark:#1b1b1b;
-    --card:#ffffff;
-    --shadow:0 8px 25px rgba(0,0,0,0.08);
+--primary:#16a34a;--dark:#0f172a;--bg:#f8fafc;--card:#fff;--border:#e2e8f0;
 }
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
+body{background:var(--bg);color:#111827}
+.header{
+background:linear-gradient(135deg,#16a34a,#22c55e);
+padding:30px;color:white
 }
-
-body{
-    background:var(--light);
-    color:#333;
+.hero{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
+.hero-card{
+background:rgba(255,255,255,.15);
+backdrop-filter:blur(12px);
+padding:20px;border-radius:20px;min-width:300px
 }
-
-header{
-    background:linear-gradient(135deg,#2e7d32,#66bb6a);
-    color:white;
-    padding:20px;
-}
-
-.nav{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-}
-
-.logo{
-    font-size:1.5rem;
-    font-weight:bold;
-}
-
-nav a{
-    color:white;
-    text-decoration:none;
-    margin-left:20px;
-}
-
-.hero{
-    text-align:center;
-    padding:60px 20px;
-}
-
-.hero h1{
-    font-size:2.5rem;
-    margin-bottom:15px;
-}
-
-.hero p{
-    font-size:1.1rem;
-    max-width:700px;
-    margin:auto;
-}
-
-.container{
-    width:90%;
-    max-width:1200px;
-    margin:auto;
-}
-
-.section{
-    margin:40px 0;
-}
-
-.section-title{
-    font-size:1.8rem;
-    margin-bottom:20px;
-    color:var(--primary);
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-
+.container{max-width:1400px;margin:auto;padding:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
 .card{
-    background:var(--card);
-    border-radius:15px;
-    padding:20px;
-    box-shadow:var(--shadow);
+background:white;border-radius:18px;padding:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+transition:.3s
 }
-
-.card h3{
-    margin-bottom:10px;
-    color:var(--primary);
+.card:hover{transform:translateY(-6px)}
+.card h3{margin-bottom:10px;color:#16a34a}
+.section-title{margin:30px 0 15px;font-size:1.5rem}
+.btn{
+display:inline-block;background:#16a34a;color:white;
+padding:10px 14px;border-radius:10px;text-decoration:none
 }
-
-.weather{
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:20px;
+table{width:100%;border-collapse:collapse;background:white;border-radius:15px;overflow:hidden}
+th,td{padding:12px;border-bottom:1px solid #eee;text-align:left}
+th{background:#16a34a;color:white}
+input,select{
+width:100%;padding:12px;border:1px solid #ddd;
+border-radius:10px;margin:8px 0
 }
-
-.weather-box{
-    flex:1;
-    min-width:250px;
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:var(--shadow);
-}
-
-table{
-    width:100%;
-    border-collapse:collapse;
-    background:white;
-    border-radius:15px;
-    overflow:hidden;
-    box-shadow:var(--shadow);
-}
-
-th{
-    background:var(--primary);
-    color:white;
-}
-
-th,td{
-    padding:14px;
-    text-align:center;
-}
-
-tr:nth-child(even){
-    background:#f3f6f8;
-}
-
-.calculator{
-    background:white;
-    padding:25px;
-    border-radius:15px;
-    box-shadow:var(--shadow);
-}
-
-input{
-    width:100%;
-    padding:12px;
-    margin-top:8px;
-    margin-bottom:15px;
-    border:1px solid #ccc;
-    border-radius:8px;
-}
-
 button{
-    background:var(--primary);
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:8px;
-    cursor:pointer;
+background:#16a34a;color:white;border:none;
+padding:12px 20px;border-radius:10px;cursor:pointer
 }
-
-button:hover{
-    background:var(--secondary);
-}
-
 .result{
-    margin-top:15px;
-    font-size:1.2rem;
-    font-weight:bold;
+margin-top:10px;font-weight:bold;font-size:1.1rem
 }
-
-.scheme{
-    display:block;
-    text-decoration:none;
-    color:#2e7d32;
-    margin-bottom:10px;
-    font-weight:600;
+.bottom-nav{
+position:fixed;bottom:0;left:0;right:0;background:white;
+display:flex;justify-content:space-around;padding:10px;
+box-shadow:0 -5px 15px rgba(0,0,0,.1)
 }
-
-footer{
-    background:#1f2937;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:50px;
+.sos{
+position:fixed;right:20px;bottom:80px;
+width:60px;height:60px;border-radius:50%;
+background:red;color:white;font-weight:bold;
+display:flex;align-items:center;justify-content:center;
+text-decoration:none
 }
-
-@media(max-width:768px){
-    .hero h1{
-        font-size:2rem;
-    }
-
-    nav{
-        margin-top:10px;
-    }
-
-    nav a{
-        display:inline-block;
-        margin:10px;
-    }
-}
+footer{padding:50px 20px;text-align:center}
+@media(min-width:768px){.bottom-nav{display:none}}
 </style>
 </head>
 <body>
 
-<header>
-    <div class="nav">
-        <div class="logo">🌾 Tamil Nadu Farmer Portal</div>
-        <nav>
-            <a href="#weather">Weather</a>
-            <a href="#crops">Crops</a>
-            <a href="#market">Market</a>
-            <a href="#calculator">Calculator</a>
-            <a href="#schemes">Schemes</a>
-        </nav>
-    </div>
-
-    <div class="hero">
-        <h1>Smart Farming for Tamil Nadu Farmers</h1>
-        <p>
-            Weather updates, crop guidance, market prices,
-            government schemes and profit calculations in one place.
-        </p>
-    </div>
-</header>
+<div class="header">
+<div class="hero">
+<div>
+<h1>🌾 Tamil Nadu Smart Farmer Portal</h1>
+<p>Weather • Market Prices • Schemes • Farm Analytics</p>
+</div>
+<div class="hero-card">
+<h2>Today's Snapshot</h2>
+<p>☀️ Temperature: 31°C</p>
+<p>🌧 Rain Chance: 40%</p>
+<p>💰 Estimated Profit: ₹2,45,300</p>
+</div>
+</div>
+</div>
 
 <div class="container">
 
-    <!-- Weather -->
-    <section class="section" id="weather">
-        <h2 class="section-title">☀ Weather Information</h2>
+<h2 class="section-title">Quick Services</h2>
+<div class="grid">
+<div class="card"><h3>🌦 Weather</h3><p>7-day forecast & alerts</p></div>
+<div class="card"><h3>📈 Market Prices</h3><p>District crop rates</p></div>
+<div class="card"><h3>🤖 AI Advisor</h3><p>Crop recommendations</p></div>
+<div class="card"><h3>🚜 Machinery</h3><p>Rental services</p></div>
+</div>
 
-        <div class="weather">
-            <div class="weather-box">
-                <h3>Today's Weather</h3>
-                <p><strong>Location:</strong> Coimbatore</p>
-                <p><strong>Temperature:</strong> 31°C</p>
-                <p><strong>Humidity:</strong> 68%</p>
-                <p><strong>Rain Chance:</strong> 25%</p>
-            </div>
+<h2 class="section-title">Government Portals</h2>
+<div class="grid">
+<div class="card"><h3>PM-KISAN</h3><a class="btn" target="_blank" href="https://pmkisan.gov.in">Open</a></div>
+<div class="card"><h3>PMFBY Insurance</h3><a class="btn" target="_blank" href="https://pmfby.gov.in">Open</a></div>
+<div class="card"><h3>Uzhavan Portal</h3><a class="btn" target="_blank" href="https://www.tnagrisnet.tn.gov.in/people_app/dashboard/main/en">Open</a></div>
+<div class="card"><h3>Farmer Registry</h3><a class="btn" target="_blank" href="https://tnfr.agristack.gov.in">Open</a></div>
+<div class="card"><h3>TN e-Sevai</h3><a class="btn" target="_blank" href="https://www.tnagrisnet.tn.gov.in/esevai/">Open</a></div>
+<div class="card"><h3>e-NAM</h3><a class="btn" target="_blank" href="https://www.enam.gov.in">Open</a></div>
+</div>
 
-            <div class="weather-box">
-                <h3>Farming Advice</h3>
-                <p>
-                    Monitor irrigation needs and apply fertilizers
-                    during cooler morning hours.
-                </p>
-            </div>
-        </div>
-    </section>
+<h2 class="section-title">Market Prices</h2>
+<table>
+<tr><th>Crop</th><th>District</th><th>Price</th></tr>
+<tr><td>Paddy</td><td>Erode</td><td>₹2200</td></tr>
+<tr><td>Groundnut</td><td>Madurai</td><td>₹6200</td></tr>
+<tr><td>Coconut</td><td>Pollachi</td><td>₹14500</td></tr>
+</table>
 
-    <!-- Crop Advisory -->
-    <section class="section" id="crops">
-        <h2 class="section-title">🌱 Crop Advisory</h2>
+<h2 class="section-title">Farm Profit Calculator</h2>
+<div class="card">
+<input id="income" placeholder="Total Income">
+<input id="expense" placeholder="Total Expense">
+<button onclick="calc()">Calculate</button>
+<div id="result" class="result"></div>
+</div>
 
-        <div class="grid">
-            <div class="card">
-                <h3>Paddy</h3>
-                <p>Maintain water levels and monitor pest attacks.</p>
-            </div>
+<h2 class="section-title">Crop Advisory</h2>
+<div class="grid">
+<div class="card"><h3>🌾 Paddy</h3><p>Apply nitrogen. Monitor stem borer.</p></div>
+<div class="card"><h3>🍌 Banana</h3><p>Check leaf spot disease.</p></div>
+<div class="card"><h3>🌱 Groundnut</h3><p>Maintain moisture level.</p></div>
+</div>
 
-            <div class="card">
-                <h3>Sugarcane</h3>
-                <p>Ensure proper irrigation and weed control.</p>
-            </div>
-
-            <div class="card">
-                <h3>Banana</h3>
-                <p>Check for leaf spot disease and nutrient deficiency.</p>
-            </div>
-
-            <div class="card">
-                <h3>Groundnut</h3>
-                <p>Monitor flowering stage and moisture levels.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Market Prices -->
-    <section class="section" id="market">
-        <h2 class="section-title">📈 Market Prices</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Crop</th>
-                    <th>Market</th>
-                    <th>Price (₹/Quintal)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Paddy</td>
-                    <td>Erode</td>
-                    <td>2200</td>
-                </tr>
-                <tr>
-                    <td>Maize</td>
-                    <td>Salem</td>
-                    <td>2050</td>
-                </tr>
-                <tr>
-                    <td>Groundnut</td>
-                    <td>Madurai</td>
-                    <td>6200</td>
-                </tr>
-                <tr>
-                    <td>Coconut</td>
-                    <td>Pollachi</td>
-                    <td>14500</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- Calculator -->
-    <section class="section" id="calculator">
-        <h2 class="section-title">💰 Profit Calculator</h2>
-
-        <div class="calculator">
-            <label>Total Income (₹)</label>
-            <input type="number" id="income" placeholder="Enter total income">
-
-            <label>Total Expenses (₹)</label>
-            <input type="number" id="expense" placeholder="Enter total expenses">
-
-            <button onclick="calculateProfit()">Calculate Profit</button>
-
-            <div class="result" id="profitResult"></div>
-        </div>
-    </section>
-
-    <!-- Schemes -->
-    <section class="section" id="schemes">
-        <h2 class="section-title">🏛 Government Schemes</h2>
-
-        <div class="card">
-            <a class="scheme" href="#">
-                PM-KISAN Income Support Scheme
-            </a>
-
-            <a class="scheme" href="#">
-                Crop Insurance Scheme (PMFBY)
-            </a>
-
-            <a class="scheme" href="#">
-                Tamil Nadu Agricultural Subsidy Programs
-            </a>
-
-            <a class="scheme" href="#">
-                Solar Pump Subsidy Scheme
-            </a>
-        </div>
-    </section>
-
-    <!-- Helpline -->
-    <section class="section">
-        <h2 class="section-title">📞 Farmer Support</h2>
-
-        <div class="card">
-            <p><strong>Agriculture Helpline:</strong> 1800-180-1551</p>
-            <p><strong>Email:</strong> support@tnfarmerportal.in</p>
-            <p><strong>Office Hours:</strong> 9:00 AM - 6:00 PM</p>
-        </div>
-    </section>
+<h2 class="section-title">Emergency Contacts</h2>
+<div class="grid">
+<div class="card"><h3>Agriculture Helpline</h3><p>1800-180-1551</p></div>
+<div class="card"><h3>Kisan Call Center</h3><p>1800-180-1551</p></div>
+<div class="card"><h3>Disaster Support</h3><p>112</p></div>
+</div>
 
 </div>
 
+<a class="sos" href="tel:112">SOS</a>
+
+<div class="bottom-nav">
+<div>🏠 Home</div>
+<div>🌦 Weather</div>
+<div>📈 Market</div>
+<div>🏛 Schemes</div>
+<div>👤 Profile</div>
+</div>
+
 <footer>
-    <p>© 2026 Tamil Nadu Farmer Portal | Empowering Farmers Through Technology</p>
+© 2026 Tamil Nadu Smart Farmer Portal
 </footer>
 
 <script>
-function calculateProfit() {
-    let income = parseFloat(document.getElementById('income').value) || 0;
-    let expense = parseFloat(document.getElementById('expense').value) || 0;
-
-    let profit = income - expense;
-
-    document.getElementById('profitResult').innerHTML =
-        "Estimated Profit: ₹ " + profit.toLocaleString();
+function calc(){
+let i=parseFloat(document.getElementById('income').value)||0;
+let e=parseFloat(document.getElementById('expense').value)||0;
+document.getElementById('result').innerHTML=
+"Profit: ₹"+(i-e).toLocaleString();
 }
 </script>
 
