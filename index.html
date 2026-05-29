@@ -1,433 +1,118 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Tamil Nadu Smart Farmer Portal</title>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<!-- Chart.js -->
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<!-- Leaflet -->
-<link rel="stylesheet"
-href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TN Farmer Portal Pro</title>
 <style>
-
-:root{
---primary:#16a34a;
---secondary:#22c55e;
---dark:#0f172a;
---light:#f8fafc;
---card:#ffffff;
---danger:#ef4444;
-}
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Inter,sans-serif;
-}
-
-body{
-background:var(--light);
-}
-
-.sidebar{
-position:fixed;
-left:0;
-top:0;
-width:260px;
-height:100vh;
-background:#14532d;
-color:white;
-padding:20px;
-overflow:auto;
-}
-
-.sidebar h2{
-margin-bottom:20px;
-}
-
-.sidebar a{
-display:block;
-padding:12px;
-color:white;
-text-decoration:none;
-border-radius:10px;
-margin-bottom:6px;
-}
-
-.sidebar a:hover{
-background:rgba(255,255,255,.15);
-}
-
-.main{
-margin-left:260px;
-padding:20px;
-}
-
-.header{
-background:linear-gradient(135deg,#166534,#22c55e);
-padding:25px;
-border-radius:20px;
-color:white;
-margin-bottom:20px;
-}
-
-.cards{
-display:grid;
-grid-template-columns:
-repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
-}
-
-.card{
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:
-0 10px 30px rgba(0,0,0,.08);
-}
-
-.card h3{
-margin-bottom:15px;
-}
-
-input,
-select,
-textarea{
-width:100%;
-padding:12px;
-margin-top:8px;
-margin-bottom:12px;
-border:1px solid #ddd;
-border-radius:10px;
-}
-
-button{
-background:var(--primary);
-color:white;
-border:none;
-padding:12px 20px;
-border-radius:10px;
-cursor:pointer;
-}
-
-#map{
-height:400px;
-border-radius:20px;
-}
-
-.dark{
-background:#0f172a;
-color:white;
-}
-
-.dark .card{
-background:#1e293b;
-color:white;
-}
-
+body{font-family:Arial,sans-serif;margin:0;background:#f4f7f4}
+header{background:#198754;color:#fff;padding:20px}
+.container{max-width:1200px;margin:auto;padding:20px}
+.card{background:#fff;padding:18px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.1);margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px}
+input,select,button{padding:10px;width:100%;margin:5px 0}
+button{background:#198754;color:#fff;border:none;cursor:pointer}
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px;border:1px solid #ddd}
+th{background:#198754;color:#fff}
 </style>
 </head>
-
 <body>
-
-<div class="sidebar">
-
-<h2>🌾 Farmer Portal</h2>
-
-<a href="#">Dashboard</a>
-<a href="#">Weather</a>
-<a href="#">Market Prices</a>
-<a href="#">Crop Advisory</a>
-<a href="#">Soil Health</a>
-<a href="#">Fertilizer</a>
-<a href="#">Irrigation</a>
-<a href="#">Yield Prediction</a>
-<a href="#">Farm Map</a>
-<a href="#">Schemes</a>
-<a href="#">AI Assistant</a>
-
-</div>
-
-<div class="main">
-
-<div class="header">
-
-<h1>Smart Farmer Dashboard</h1>
-
-<p>
-Weather • Market • AI • Government Schemes
-</p>
-
-</div>
-
-<div class="cards">
+<header><h1>🌾 Tamil Nadu Farmer Portal Pro</h1></header>
+<div class="container">
 
 <div class="card">
-<h3>Weather</h3>
-
-<button onclick="getLocation()">
-Detect Location
-</button>
-
-<p id="weather">
-Waiting...
-</p>
+<h2>Weather (Location Based)</h2>
+<button onclick="getLocation()">Get My Location</button>
+<p id="weather">Click button to detect location.</p>
 </div>
 
 <div class="card">
-<h3>Profit Calculator</h3>
-
-<input id="income" placeholder="Income">
-
-<input id="expense" placeholder="Expense">
-
-<button onclick="profit()">
-Calculate
-</button>
-
+<h2>Profit Calculator</h2>
+<input type="number" id="income" placeholder="Income">
+<input type="number" id="expense" placeholder="Expense">
+<button onclick="profit()">Calculate</button>
 <p id="profitResult"></p>
-
 </div>
 
 <div class="card">
-
-<h3>Yield Prediction</h3>
-
-<input id="area" placeholder="Acres">
-
-<button onclick="yieldPrediction()">
-Predict
-</button>
-
-<p id="yield"></p>
-
-</div>
-
-<div class="card">
-
-<h3>Soil Health</h3>
-
-<select id="soil">
-<option>Good</option>
-<option>Average</option>
-<option>Poor</option>
+<h2>Fertilizer Requirement Calculator</h2>
+<input type="number" id="acre" placeholder="Land Area (Acres)">
+<select id="crop">
+<option>Paddy</option>
+<option>Banana</option>
+<option>Groundnut</option>
 </select>
-
-<button onclick="soilHealth()">
-Analyze
-</button>
-
-<p id="soilResult"></p>
-
+<button onclick="fertilizer()">Calculate</button>
+<p id="fertResult"></p>
 </div>
-
-</div>
-
-<br>
 
 <div class="card">
-
-<h3>Farm Analytics</h3>
-
-<canvas id="chart"></canvas>
-
+<h2>Market Prices Search</h2>
+<input id="search" placeholder="Search crop" onkeyup="filterTable()">
+<table id="marketTable">
+<tr><th>Crop</th><th>District</th><th>Price</th></tr>
+<tr><td>Paddy</td><td>Erode</td><td>2200</td></tr>
+<tr><td>Groundnut</td><td>Madurai</td><td>6200</td></tr>
+<tr><td>Coconut</td><td>Pollachi</td><td>14500</td></tr>
+</table>
 </div>
-
-<br>
 
 <div class="card">
-
-<h3>Farm Location</h3>
-
-<div id="map"></div>
-
+<h2>Government Portals</h2>
+<div class="grid">
+<a href="https://pmkisan.gov.in" target="_blank"><button>PM-KISAN</button></a>
+<a href="https://pmfby.gov.in" target="_blank"><button>Crop Insurance</button></a>
+<a href="https://www.enam.gov.in" target="_blank"><button>eNAM</button></a>
+<a href="https://tnfr.agristack.gov.in" target="_blank"><button>Farmer Registry</button></a>
 </div>
-
-<br>
-
-<div class="card">
-
-<h3>Government Portals</h3>
-
-<a href="https://pmkisan.gov.in"
-target="_blank">PM-KISAN</a>
-
-<br><br>
-
-<a href="https://pmfby.gov.in"
-target="_blank">Crop Insurance</a>
-
-<br><br>
-
-<a href="https://www.enam.gov.in"
-target="_blank">eNAM</a>
-
 </div>
-
-<br>
-
-<div class="card">
-
-<h3>AI Crop Advisor</h3>
-
-<textarea
-id="question"
-placeholder="Describe your problem">
-</textarea>
-
-<button onclick="advisor()">
-Get Advice
-</button>
-
-<p id="answer"></p>
-
-</div>
-
-<br>
-
-<button onclick="toggleDark()">
-Toggle Dark Mode
-</button>
 
 </div>
 
 <script>
+function profit(){
+ let i=+document.getElementById('income').value||0;
+ let e=+document.getElementById('expense').value||0;
+ let p=i-e;
+ localStorage.setItem('lastProfit',p);
+ document.getElementById('profitResult').innerHTML="Profit ₹"+p.toLocaleString();
+}
+
+function fertilizer(){
+ let acre=+document.getElementById('acre').value||0;
+ let crop=document.getElementById('crop').value;
+ let rate={Paddy:50,Banana:80,Groundnut:35};
+ let req=acre*rate[crop];
+ document.getElementById('fertResult').innerHTML=
+ crop+" requires approx "+req+" kg fertilizer.";
+}
+
+function filterTable(){
+ let val=document.getElementById('search').value.toLowerCase();
+ let rows=document.querySelectorAll("#marketTable tr");
+ rows.forEach((r,i)=>{
+ if(i===0) return;
+ r.style.display=r.innerText.toLowerCase().includes(val)?"":"none";
+ });
+}
 
 function getLocation(){
-
-navigator.geolocation.getCurrentPosition(pos=>{
-
-document.getElementById("weather").innerHTML=
-"Lat: "+
-pos.coords.latitude+
-"<br>Lon: "+
-pos.coords.longitude+
-"<br>Connect OpenWeather API";
-
-});
+ if(navigator.geolocation){
+ navigator.geolocation.getCurrentPosition(pos=>{
+ document.getElementById('weather').innerHTML=
+ "Latitude: "+pos.coords.latitude.toFixed(3)+
+ "<br>Longitude: "+pos.coords.longitude.toFixed(3)+
+ "<br>Connect OpenWeather API for live forecast.";
+ });
+ }
 }
 
-function profit(){
-
-let income=
-parseFloat(
-document.getElementById("income").value
-)||0;
-
-let expense=
-parseFloat(
-document.getElementById("expense").value
-)||0;
-
-document.getElementById("profitResult")
-.innerHTML=
-"Profit ₹"+
-(income-expense).toLocaleString();
+window.onload=()=>{
+ let last=localStorage.getItem('lastProfit');
+ if(last) document.getElementById('profitResult').innerHTML="Last Profit ₹"+Number(last).toLocaleString();
 }
-
-function yieldPrediction(){
-
-let area=
-parseFloat(
-document.getElementById("area").value
-)||0;
-
-let yield=
-area*28;
-
-document.getElementById("yield")
-.innerHTML=
-yield+
-" Quintals";
-}
-
-function soilHealth(){
-
-let s=
-document.getElementById("soil").value;
-
-let msg="";
-
-if(s==="Poor"){
-msg="Apply organic manure";
-}
-else if(s==="Average"){
-msg="Balanced fertilizer";
-}
-else{
-msg="Healthy soil";
-}
-
-document.getElementById("soilResult")
-.innerHTML=msg;
-}
-
-function advisor(){
-
-let q=
-document.getElementById("question")
-.value.toLowerCase();
-
-let result=
-"Consult local officer";
-
-if(q.includes("yellow")){
-result=
-"Possible Nitrogen Deficiency";
-}
-
-if(q.includes("pest")){
-result=
-"Inspect leaves and spray recommended pesticide";
-}
-
-document.getElementById("answer")
-.innerHTML=result;
-}
-
-function toggleDark(){
-document.body.classList.toggle("dark");
-}
-
-const ctx=
-document.getElementById("chart");
-
-new Chart(ctx,{
-type:'bar',
-data:{
-labels:[
-'Jan',
-'Feb',
-'Mar',
-'Apr'
-],
-datasets:[{
-label:'Profit',
-data:[12000,18000,15000,22000]
-}]
-}
-});
-
-const map=
-L.map('map')
-.setView([11.0168,76.9558],8);
-
-L.tileLayer(
-'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
-).addTo(map);
-
 </script>
-
 </body>
 </html>
