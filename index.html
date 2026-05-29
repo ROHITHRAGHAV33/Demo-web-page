@@ -2,160 +2,168 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tamil Nadu Smart Farmer Portal</title>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>TN Smart Farmer Portal Enterprise</title>
 <style>
-:root{
---primary:#16a34a;--dark:#0f172a;--bg:#f8fafc;--card:#fff;--border:#e2e8f0;
-}
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,sans-serif}
-body{background:var(--bg);color:#111827}
-.header{
-background:linear-gradient(135deg,#16a34a,#22c55e);
-padding:30px;color:white
-}
-.hero{display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px}
-.hero-card{
-background:rgba(255,255,255,.15);
-backdrop-filter:blur(12px);
-padding:20px;border-radius:20px;min-width:300px
-}
+:root{--g:#16a34a;--bg:#f8fafc;--c:#fff}
+*{box-sizing:border-box;font-family:Inter,Arial,sans-serif}
+body{margin:0;background:var(--bg)}
+header{background:linear-gradient(135deg,#166534,#22c55e);color:#fff;padding:20px}
 .container{max-width:1400px;margin:auto;padding:20px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px}
-.card{
-background:white;border-radius:18px;padding:20px;
-box-shadow:0 10px 30px rgba(0,0,0,.08);
-transition:.3s
-}
-.card:hover{transform:translateY(-6px)}
-.card h3{margin-bottom:10px;color:#16a34a}
-.section-title{margin:30px 0 15px;font-size:1.5rem}
-.btn{
-display:inline-block;background:#16a34a;color:white;
-padding:10px 14px;border-radius:10px;text-decoration:none
-}
-table{width:100%;border-collapse:collapse;background:white;border-radius:15px;overflow:hidden}
-th,td{padding:12px;border-bottom:1px solid #eee;text-align:left}
-th{background:#16a34a;color:white}
-input,select{
-width:100%;padding:12px;border:1px solid #ddd;
-border-radius:10px;margin:8px 0
-}
-button{
-background:#16a34a;color:white;border:none;
-padding:12px 20px;border-radius:10px;cursor:pointer
-}
-.result{
-margin-top:10px;font-weight:bold;font-size:1.1rem
-}
-.bottom-nav{
-position:fixed;bottom:0;left:0;right:0;background:white;
-display:flex;justify-content:space-around;padding:10px;
-box-shadow:0 -5px 15px rgba(0,0,0,.1)
-}
-.sos{
-position:fixed;right:20px;bottom:80px;
-width:60px;height:60px;border-radius:50%;
-background:red;color:white;font-weight:bold;
-display:flex;align-items:center;justify-content:center;
-text-decoration:none
-}
-footer{padding:50px 20px;text-align:center}
-@media(min-width:768px){.bottom-nav{display:none}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.card{background:#fff;border-radius:18px;padding:18px;box-shadow:0 10px 20px rgba(0,0,0,.08)}
+button{background:var(--g);color:#fff;border:none;padding:10px 14px;border-radius:10px;cursor:pointer}
+input,select{width:100%;padding:10px;margin:6px 0;border:1px solid #ddd;border-radius:10px}
+.progress{height:12px;background:#eee;border-radius:10px;overflow:hidden}
+.progress div{height:100%;background:#22c55e}
+nav{display:flex;gap:10px;flex-wrap:wrap}
+a.portal{display:block;padding:10px;background:#eef;border-radius:10px;text-decoration:none;color:#000;margin:5px 0}
 </style>
 </head>
 <body>
-
-<div class="header">
-<div class="hero">
-<div>
-<h1>🌾 Tamil Nadu Smart Farmer Portal</h1>
-<p>Weather • Market Prices • Schemes • Farm Analytics</p>
-</div>
-<div class="hero-card">
-<h2>Today's Snapshot</h2>
-<p>☀️ Temperature: 31°C</p>
-<p>🌧 Rain Chance: 40%</p>
-<p>💰 Estimated Profit: ₹2,45,300</p>
-</div>
-</div>
-</div>
+<header>
+<h1>🌾 Tamil Nadu Smart Farmer Portal - Enterprise Edition</h1>
+<p>Weather • AI Advisory • Soil • Yield • Schemes • Maps • Analytics</p>
+<nav>
+<button onclick="toggleLang()">தமிழ் / English</button>
+<button onclick="toggleDark()">Dark Mode</button>
+</nav>
+</header>
 
 <div class="container">
-
-<h2 class="section-title">Quick Services</h2>
 <div class="grid">
-<div class="card"><h3>🌦 Weather</h3><p>7-day forecast & alerts</p></div>
-<div class="card"><h3>📈 Market Prices</h3><p>District crop rates</p></div>
-<div class="card"><h3>🤖 AI Advisor</h3><p>Crop recommendations</p></div>
-<div class="card"><h3>🚜 Machinery</h3><p>Rental services</p></div>
-</div>
 
-<h2 class="section-title">Government Portals</h2>
-<div class="grid">
-<div class="card"><h3>PM-KISAN</h3><a class="btn" target="_blank" href="https://pmkisan.gov.in">Open</a></div>
-<div class="card"><h3>PMFBY Insurance</h3><a class="btn" target="_blank" href="https://pmfby.gov.in">Open</a></div>
-<div class="card"><h3>Uzhavan Portal</h3><a class="btn" target="_blank" href="https://www.tnagrisnet.tn.gov.in/people_app/dashboard/main/en">Open</a></div>
-<div class="card"><h3>Farmer Registry</h3><a class="btn" target="_blank" href="https://tnfr.agristack.gov.in">Open</a></div>
-<div class="card"><h3>TN e-Sevai</h3><a class="btn" target="_blank" href="https://www.tnagrisnet.tn.gov.in/esevai/">Open</a></div>
-<div class="card"><h3>e-NAM</h3><a class="btn" target="_blank" href="https://www.enam.gov.in">Open</a></div>
-</div>
-
-<h2 class="section-title">Market Prices</h2>
-<table>
-<tr><th>Crop</th><th>District</th><th>Price</th></tr>
-<tr><td>Paddy</td><td>Erode</td><td>₹2200</td></tr>
-<tr><td>Groundnut</td><td>Madurai</td><td>₹6200</td></tr>
-<tr><td>Coconut</td><td>Pollachi</td><td>₹14500</td></tr>
-</table>
-
-<h2 class="section-title">Farm Profit Calculator</h2>
 <div class="card">
-<input id="income" placeholder="Total Income">
-<input id="expense" placeholder="Total Expense">
-<button onclick="calc()">Calculate</button>
-<div id="result" class="result"></div>
+<h3>🌦 Live Weather</h3>
+<button onclick="getLocation()">Detect Location</button>
+<p id="weather">Location not detected.</p>
 </div>
 
-<h2 class="section-title">Crop Advisory</h2>
-<div class="grid">
-<div class="card"><h3>🌾 Paddy</h3><p>Apply nitrogen. Monitor stem borer.</p></div>
-<div class="card"><h3>🍌 Banana</h3><p>Check leaf spot disease.</p></div>
-<div class="card"><h3>🌱 Groundnut</h3><p>Maintain moisture level.</p></div>
+<div class="card">
+<h3>💰 Profit Calculator</h3>
+<input id="income" type="number" placeholder="Income">
+<input id="expense" type="number" placeholder="Expense">
+<button onclick="profit()">Calculate</button>
+<p id="profit"></p>
 </div>
 
-<h2 class="section-title">Emergency Contacts</h2>
-<div class="grid">
-<div class="card"><h3>Agriculture Helpline</h3><p>1800-180-1551</p></div>
-<div class="card"><h3>Kisan Call Center</h3><p>1800-180-1551</p></div>
-<div class="card"><h3>Disaster Support</h3><p>112</p></div>
+<div class="card">
+<h3>🌱 Fertilizer Calculator</h3>
+<input id="acre" type="number" placeholder="Acres">
+<select id="crop">
+<option>Paddy</option><option>Banana</option><option>Groundnut</option>
+</select>
+<button onclick="fert()">Calculate</button>
+<p id="fert"></p>
+</div>
+
+<div class="card">
+<h3>💧 Irrigation Calculator</h3>
+<input id="waterAcres" type="number" placeholder="Acres">
+<button onclick="waterCalc()">Estimate Water</button>
+<p id="water"></p>
+</div>
+
+<div class="card">
+<h3>📈 Yield Prediction</h3>
+<input id="yieldArea" type="number" placeholder="Acres">
+<button onclick="yieldPredict()">Predict</button>
+<p id="yield"></p>
+</div>
+
+<div class="card">
+<h3>🧪 Soil Health</h3>
+<select id="soil">
+<option>Good</option><option>Average</option><option>Poor</option>
+</select>
+<button onclick="soilCheck()">Analyze</button>
+<p id="soilResult"></p>
+</div>
+
+<div class="card">
+<h3>🤖 AI Crop Advisor</h3>
+<input id="question" placeholder="Ask about crop issue">
+<button onclick="advisor()">Get Advice</button>
+<p id="advice"></p>
+</div>
+
+<div class="card">
+<h3>📷 Disease Detection</h3>
+<input type="file">
+<p>Placeholder for AI image disease detection integration.</p>
+</div>
+
+<div class="card">
+<h3>🗺 Farm GPS</h3>
+<p id="gps">No location</p>
+</div>
+
+<div class="card">
+<h3>🏛 Government Services</h3>
+<a class="portal" href="https://pmkisan.gov.in" target="_blank">PM-KISAN</a>
+<a class="portal" href="https://pmfby.gov.in" target="_blank">Crop Insurance</a>
+<a class="portal" href="https://www.enam.gov.in" target="_blank">eNAM</a>
+<a class="portal" href="https://tnfr.agristack.gov.in" target="_blank">Farmer Registry</a>
+<a class="portal" href="https://www.tnagrisnet.tn.gov.in/esevai/" target="_blank">TN Agri e-Sevai</a>
+</div>
+
+<div class="card">
+<h3>📊 Farm Progress</h3>
+<div class="progress"><div style="width:72%"></div></div>
+<p>Crop Cycle Completion: 72%</p>
+</div>
+
+<div class="card">
+<h3>📱 WhatsApp Alerts</h3>
+<input placeholder="Mobile Number">
+<button>Subscribe</button>
 </div>
 
 </div>
-
-<a class="sos" href="tel:112">SOS</a>
-
-<div class="bottom-nav">
-<div>🏠 Home</div>
-<div>🌦 Weather</div>
-<div>📈 Market</div>
-<div>🏛 Schemes</div>
-<div>👤 Profile</div>
 </div>
-
-<footer>
-© 2026 Tamil Nadu Smart Farmer Portal
-</footer>
 
 <script>
-function calc(){
-let i=parseFloat(document.getElementById('income').value)||0;
-let e=parseFloat(document.getElementById('expense').value)||0;
-document.getElementById('result').innerHTML=
-"Profit: ₹"+(i-e).toLocaleString();
+let tamil=false;
+function toggleLang(){
+ tamil=!tamil;
+ alert(tamil?"தமிழ் மொழி தேர்ந்தெடுக்கப்பட்டது":"English selected");
+}
+function toggleDark(){
+ document.body.style.background=document.body.style.background=="rgb(15, 23, 42)"?"#f8fafc":"#0f172a";
+ document.body.style.color=document.body.style.color=="white"?"black":"white";
+}
+function getLocation(){
+ navigator.geolocation.getCurrentPosition(p=>{
+ gps.innerHTML=`Lat: ${p.coords.latitude.toFixed(4)}<br>Lon: ${p.coords.longitude.toFixed(4)}`;
+ weather.innerHTML="Location detected. Connect OpenWeather API key for live forecast.";
+ });
+}
+function profit(){
+ let p=(+income.value||0)-(+expense.value||0);
+ document.getElementById('profit').innerHTML="Profit ₹"+p.toLocaleString();
+}
+function fert(){
+ let rates={Paddy:50,Banana:80,Groundnut:35};
+ document.getElementById('fert').innerHTML=(+acre.value*rates[crop.value])+" kg required";
+}
+function waterCalc(){
+ document.getElementById('water').innerHTML=((+waterAcres.value||0)*5000)+" litres/day";
+}
+function yieldPredict(){
+ document.getElementById('yield').innerHTML=((+yieldArea.value||0)*28)+" quintals estimated";
+}
+function soilCheck(){
+ let v=soil.value;
+ soilResult.innerHTML=v=="Poor"?"Add organic manure and micronutrients":
+ v=="Average"?"Balanced fertilizer recommended":"Soil health is good";
+}
+function advisor(){
+ let q=question.value.toLowerCase();
+ let r="Monitor crop and follow local advisory.";
+ if(q.includes("yellow")) r="Possible nitrogen deficiency.";
+ if(q.includes("pest")) r="Inspect leaves and use recommended pesticide.";
+ advice.innerHTML=r;
 }
 </script>
-
 </body>
 </html>
